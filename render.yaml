@@ -4,7 +4,7 @@ services:
     runtime: python3
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run Scripts/traffic_dashboard.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true --server.fileWatcherType=none --browser.gatherUsageStats=false --server.enableCORS=false --server.enableXsrfProtection=false
+    startCommand: streamlit run Scripts/traffic_dashboard.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true --server.fileWatcherType=none --browser.gatherUsageStats=false
     healthCheckPath: /_stcore/health
     envVars:
       - key: STREAMLIT_SERVER_HEADLESS
@@ -15,13 +15,4 @@ services:
         value: $PORT
       - key: STREAMLIT_SERVER_ADDRESS
         value: "0.0.0.0"
-      - key: STREAMLIT_SERVER_ENABLE_CORS
-        value: "false"
-      - key: STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION
-        value: "false"
-      - key: STREAMLIT_SERVER_MAX_UPLOAD_SIZE
-        value: "200"
-    scaling:
-      minInstances: 1
-      maxInstances: 3
     autoDeploy: true

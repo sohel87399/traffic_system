@@ -2,14 +2,37 @@ import streamlit as st
 import cv2
 import numpy as np
 import pandas as pd
-from video_processor import extract_frames
-from detector import VehicleDetector
-from tracker import TrafficTracker
 import os
 import time
 from datetime import datetime, timedelta
 import json
 import base64
+
+# Try to import custom modules with error handling
+try:
+    from video_processor import extract_frames
+except ImportError:
+    st.error("video_processor module not found")
+    def extract_frames(video_path):
+        return []
+
+try:
+    from detector import VehicleDetector
+except ImportError:
+    st.error("detector module not found")
+    class VehicleDetector:
+        def detect(self, frame):
+            return []
+
+try:
+    from tracker import TrafficTracker
+except ImportError:
+    st.error("tracker module not found")
+    class TrafficTracker:
+        def update(self, frame_id, boxes, vehicle_data=None):
+            return []
+        def get_queue_metrics(self):
+            return 0, 0, 0
 
 # Page config for professional theme
 st.set_page_config(

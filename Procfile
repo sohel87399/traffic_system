@@ -1,1 +1,0 @@
-web: streamlit run Scripts/traffic_dashboard.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true --server.fileWatcherType=none --browser.gatherUsageStats=false

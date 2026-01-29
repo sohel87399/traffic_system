@@ -14,7 +14,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'Scripts'))
 if __name__ == "__main__":
     import subprocess
     subprocess.run([
-        "streamlit", "run", 
+        "python", "-m", "streamlit", "run", 
         "Scripts/traffic_dashboard.py",
         "--server.headless=true",
         "--server.fileWatcherType=none",
